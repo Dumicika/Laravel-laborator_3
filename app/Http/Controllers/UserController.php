@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Cache\RedisTagSet;
+
+class UserController extends Controller
+{
+    public function index(){
+        $users = User::all();
+        return view('users.index', ['users' => $users]);
+    }
+    public function create(){
+        return view('users.create');
+    }
+    public function store(Request $request){
+        User::create($request->all());
+        return redirect()->route('users.create');    
+    }
+}
