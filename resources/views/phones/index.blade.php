@@ -4,6 +4,12 @@
 
 @section('content')
     <h4>Lista de contacte</h4>
+    <a href="{{ route('phones.create') }}">Add</a> <hr>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <table>
         <thead>
             <tr>
@@ -16,8 +22,9 @@
         <tbody>
             @forelse ($phones as $phone)
                 <tr>
-                    <td>{{$phone->user()->fullName()}}</td>
-                    <td>{{$phone->phone()}}</td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $phone->user()->get()->first()->name}}</td>
+                    <td>{{ $phone->phone }}</td>
                     <td>
                         <a href="">Edit</a>
                         <a href="">Delete</a>

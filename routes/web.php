@@ -22,11 +22,11 @@ Route::get('/users/create', [UserController::class, 'create'])->name('users.crea
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 Route::controller(PhoneController::class)->group(function(){
-    Route::get('phones', 'index');
-    Route::get('phones/create', 'create');
-    Route::post('phones', 'store');
-    Route::get('phones/{phone}/show', 'show');
-    Route::get('phones/{phone}/edit', 'edit');
-    Route::put('phones/{phone}/update', 'update');
-    Route::delete('phones/{phone}', 'destroy');
+    Route::get('phones', 'index')->name('phones.index');
+    Route::get('phones/create', 'create')->name('phones.create');
+    Route::post('phones', 'store')->name('phones.store');
+    Route::get('phones/{phone}/show', 'show')->name('phones.show');
+    Route::get('phones/{phone}/edit', 'edit')->name('phones.edit');
+    Route::put('phones/{phone}/update', 'update')->name('phones.update');
+    Route::delete('phones/{phone}', 'destroy')->name('phones.destroy');
 });
